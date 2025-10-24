@@ -2,8 +2,8 @@
 
 body {
   background-image: url("/image-mesh-gradient5.png"); /* color tipo papel */
+  background-repeat: no-repeat;
   position: relative;
-  overflow: hidden;
   font-family: var(--font-Reddit_Sans), serif;
 
   scroll-behavior: smooth;
