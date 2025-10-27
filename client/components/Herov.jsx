@@ -99,7 +99,7 @@ export default function Herov() {
 
       {/* Sección extra para el scroll */}
       <section className="h-[150vh] flex items-center justify-center text-4xl">
-        <p>↓ Scrolleá para ver las nubes irse ↓</p>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis perspiciatis consequuntur explicabo dolorem dolorum! Minima, ipsam aliquid dolorem beatae commodi quis molestias assumenda accusantium earum necessitatibus? Saepe quos corrupti, repudiandae voluptatibus nam omnis provident quia aperiam. Incidunt explicabo quidem ipsa vel veniam eveniet illo unde magni laudantium, amet ullam. Illum nulla doloremque excepturi optio consectetur, explicabo incidunt repellat? Laudantium, vero vel. Dolorum tenetur aliquam vitae iusto magnam odit. Non suscipit accusantium ad temporibus consequatur incidunt nostrum numquam beatae! Cupiditate impedit reiciendis rerum debitis possimus, molestiae sit doloribus, voluptas, eum facere recusandae fugiat quaerat dicta quasi! Esse, eveniet optio? Laudantium, distinctio?</p>
       </section>
     </main>
   );
