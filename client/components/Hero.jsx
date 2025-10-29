@@ -1,91 +1,65 @@
 "use client";
 
-import Image from "next/image";
+import { useRef } from "react";
+import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useEffect } from "react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { SplitText } from "gsap/SplitText";
+import { LogoLoop } from "./LogoLoop";
+import iconsData from "../data/icons.json";
 
 export default function Hero() {
-  useEffect(() => {
-    gsap.set(".letter-image", {
-      y: -1000,
-      opacity: 0,
-    });
+  const titleRef = useRef(null);
+  const paraRef = useRef(null);
 
-    gsap.set(".letter-image-x", {
-      x: 800,
-      opacity: 0,
-    });
+  useGSAP(() => {
+    gsap.registerPlugin(SplitText, ScrollTrigger);
 
+    // --- Animación del texto ---
+    const split = new SplitText(titleRef.current, { type: "chars" });
+    const chars = split.chars;
+
+    // Creamos una timeline para encadenar la animación del nombre y luego la del párrafo
     const tl = gsap.timeline();
 
-    tl.to(".letter-image", {
-      y: 0,
-      opacity: 1,
-      duration: 1.7,
-      ease: "expo.inOut",
-      stagger: {
-        each: 0.2,
-        from: "start",
-      },
-    });
+    tl.set(chars, { opacity: 0, y: 80 })
+      .to(chars, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.05,
+        ease: "power3.out",
+        duration: 1,
+      })
+      // pequeño delay y animación del párrafo "Desarrollador FullStack"
+      .fromTo(
+        paraRef.current,
+        { opacity: 0, y: 20 },
+        { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" },
+        "+=0.2"
+      );
 
-    tl.to(".letter-image-x", {
-      x: 0,
-      opacity: 1,
-      duration: 2,
-      ease: "bounce.out",
-      stagger: {
-        each: 0.4,
-        from: "start",
-      },
-    });
+    // Opcional: si quisieras limpiar SplitText en un unmount, podrías llamar a split.revert()
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center m-auto h-screen w-full text-[#bbbbbb]">
-      <div className="text-2xl font-bold">
-        {/* <h1>12:00 - Buenos Aires</h1> */}
-      </div>
-      <div className="flex flex-row gap-4">
-        <Image
-          className="letter-image"
-          src="/a2.png"
-          alt="Image description"
-          width={200}
-          height={200}
-        />
-        <Image
-          className="letter-image"
-          src="/l2.png"
-          alt="Image description"
-          width={200}
-          height={200}
-        />
-        <Image
-          className="letter-image"
-          src="/e2.png"
-          alt="Image description"
-          width={200}
-          height={200}
-        />
-        <Image
-          className="letter-image"
-          src="/j2.png"
-          alt="Image description"
-          width={200}
-          height={200}
-        />
-        <Image
-          className="letter-image-x"
-          src="/o2.png"
-          alt="Image description"
-          width={200}
-          height={200}
-        />
-      </div>
-      <div>
-        <h1></h1>
-      </div>
-    </div>
+    <main className="overflow-x-hidden text-white font-bold text-center">
+      {/* Sección principal */}
+      <section className="relative flex flex-col justify-center items-center h-screen overflow-hidden">
+        {/* Nubes */}
+        {/* Texto centrado */}
+        <div className="relative z-10">
+          <h1 ref={titleRef} className="text-[150px]  leading-[0.9] ">
+            Alejo <br /> Albornoz
+          </h1>
+          <p ref={paraRef} className="text-[#b2b2b2] text-[50px] ">
+            Desarrollador FullStack
+          </p>
+        </div>
+      
+
+
+        <LogoLoop logos={iconsData.icons} className="logo-white" />
+      </section>
+    </main>
   );
 }

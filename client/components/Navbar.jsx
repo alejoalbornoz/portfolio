@@ -26,15 +26,15 @@ export default function Navbar() {
 
   return (
     <nav>
-      <div className="fixed z-50 w-full text-[#edd509]">
-        <div className="flex justify-between items-center px-6 py-4 text-2xl ">
+      <div className="fixed z-50 w-full pl-20 pr-20 text-[#b2b2b2] ">
+        <div className="flex justify-between items-center px-6 py-4 text-[20px] cursor-pointer ">
           {/* Logo a la izquierda */}
-          <a href="#home" className="flex items-center gap-2">
+          <a href="#home" className="flex items-center gap-2 ">
             <p>me</p>
           </a>
-          
+
           {/* Links a la derecha */}
-          <ul className="flex lg:gap-12 gap-7">
+          <ul className="flex lg:gap-12 gap-7  cursor-pointer">
             {navLinks.map((link) => {
               return (
                 <li key={link.id}>
