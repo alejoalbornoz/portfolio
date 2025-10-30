@@ -51,14 +51,22 @@ export default function Hero() {
           <h1 ref={titleRef} className="text-[150px]  leading-[0.9] ">
             Alejo <br /> Albornoz
           </h1>
-          <p ref={paraRef} className="text-[#b2b2b2] text-[50px] ">
+          <p ref={paraRef} className="text-[#b2b2b7] text-[80px] ">
             Desarrollador FullStack
           </p>
         </div>
-      
 
+        <div className="m-20">
+         
+        </div>
 
-        <LogoLoop logos={iconsData.icons} className="logo-white" />
+        <LogoLoop
+          logos={iconsData.icons}
+          title={iconsData.title}
+          fadeOut
+          fadeOutColor="#000000"
+          className="logo-white"
+        />
       </section>
     </main>
   );

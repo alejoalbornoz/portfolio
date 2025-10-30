@@ -1,18 +1,20 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 
 body {
   /* background-image: url("/image-mesh-gradient5.png"); color tipo papel */
-  background-color: black;
+  background-color: rgb(0, 0, 0);
   background-repeat: no-repeat;
   position: relative;
   font-family: var(--font-Reddit_Sans), serif;
   scroll-behavior: smooth;
 }
 
-a, li, ul{
+a,
+li,
+ul {
   cursor: pointer;
 }
 
@@ -132,18 +134,9 @@ a, li, ul{
   }
 }
 
-/* .logo-white {
-  filter: brightness(0) invert(1);
+/* Esto apunta a cualquier imagen DENTRO de un componente con la clase 'logo-white' */
+.logo-white img {
+  filter: brightness(0) invert(1); /* Convierte el negro a blanco */
 }
 
-.logo-gray {
-  filter: brightness(0) invert(0.6);
-}
 
-.logo-blue {
-  filter: brightness(0) saturate(100%) invert(39%) sepia(90%) saturate(1745%) hue-rotate(196deg) brightness(95%) contrast(101%);
-}
-
-.logo-green {
-  filter: brightness(0) saturate(100%) invert(56%) sepia(91%) saturate(396%) hue-rotate(75deg) brightness(95%) contrast(91%);
-} */
