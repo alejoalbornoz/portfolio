@@ -14,12 +14,8 @@ export default function Hero() {
 
   useGSAP(() => {
     gsap.registerPlugin(SplitText, ScrollTrigger);
-
-    // --- Animación del texto ---
     const split = new SplitText(titleRef.current, { type: "chars" });
     const chars = split.chars;
-
-    // Creamos una timeline para encadenar la animación del nombre y luego la del párrafo
     const tl = gsap.timeline();
 
     tl.set(chars, { opacity: 0, y: 80 })
@@ -30,7 +26,7 @@ export default function Hero() {
         ease: "power3.out",
         duration: 1,
       })
-      // pequeño delay y animación del párrafo "Desarrollador FullStack"
+ 
       .fromTo(
         paraRef.current,
         { opacity: 0, y: 20 },
@@ -38,7 +34,7 @@ export default function Hero() {
         "+=0.2"
       );
 
-    // Opcional: si quisieras limpiar SplitText en un unmount, podrías llamar a split.revert()
+   
   }, []);
 
   return (
@@ -65,7 +61,6 @@ export default function Hero() {
           title={iconsData.title}
           fadeOut
           fadeOutColor="#000000"
-          className="logo-white"
         />
       </section>
     </main>
