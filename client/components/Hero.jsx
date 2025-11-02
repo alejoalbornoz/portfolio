@@ -5,8 +5,6 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { SplitText } from "gsap/SplitText";
-import { LogoLoop } from "./LogoLoop";
-import iconsData from "../data/icons.json";
 
 export default function Hero() {
   const titleRef = useRef(null);
@@ -26,42 +24,26 @@ export default function Hero() {
         ease: "power3.out",
         duration: 1,
       })
- 
+
       .fromTo(
         paraRef.current,
         { opacity: 0, y: 20 },
         { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" },
         "+=0.2"
       );
-
-   
   }, []);
 
   return (
-    <main className="overflow-x-hidden text-white font-bold text-center">
-      {/* Sección principal */}
-      <section className="relative flex flex-col justify-center items-center h-screen overflow-hidden">
-        {/* Nubes */}
-        {/* Texto centrado */}
+    <main className="overflow-x-hidden text-[#eacbf3] font-bold text-left">
+      <section className="relative flex flex-col justify-center items-center h-[70vh] overflow-hidden">
         <div className="relative z-10">
-          <h1 ref={titleRef} className="text-[150px]  leading-[0.9] ">
+          <h1 ref={titleRef} className="text-[100px]  leading-[0.9] ">
             Alejo <br /> Albornoz
           </h1>
-          <p ref={paraRef} className="text-[#b2b2b7] text-[80px] ">
+          <p ref={paraRef} className="text-[#af98b6] text-[80px] ">
             Desarrollador FullStack
           </p>
         </div>
-
-        <div className="m-20">
-         
-        </div>
-
-        <LogoLoop
-          logos={iconsData.icons}
-          title={iconsData.title}
-          fadeOut
-          fadeOutColor="#000000"
-        />
       </section>
     </main>
   );
