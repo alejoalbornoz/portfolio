@@ -1,9 +1,14 @@
 import type { Metadata } from "next";
-import { Libre_Caslon_Display, Permanent_Marker, Reddit_Sans } from "next/font/google";
+import { Libre_Caslon_Display, Permanent_Marker, Reddit_Sans, Anton } from "next/font/google";
 import "./globals.css";
 
 const libreCaslonDisplay = Libre_Caslon_Display({
   variable: "--font-libre-caslon-display",
+  weight: ["400"],
+});
+
+const anton = Anton({
+  variable: "--font-anton",
   weight: ["400"],
 });
 

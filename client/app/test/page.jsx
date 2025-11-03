@@ -1,7 +1,10 @@
-import React from 'react'
+// import Hero from "./components/Hero";
+// import MixedScrollComponent from "./components/MixedScrollComponent"
 
-export default function page() {
+export default function PageTest() {
   return (
-    <div>page</div>
-  )
+    <>
+
+    </>
+  );
 }

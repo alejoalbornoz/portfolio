@@ -31,7 +31,8 @@
     "**/*.mts",
     ".next\\dev/types/**/*.ts",
     ".next\\dev/types/**/*.ts",
-    "components/Hero.jsx"
+    "components/Hero.jsx",
+    "app/test/components/Hero.jsx"
   ],
   "exclude": ["node_modules"]
 }

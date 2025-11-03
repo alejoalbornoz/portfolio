@@ -164,10 +164,7 @@ export default function StackingCards() {
               Second card
             </div>
             <div className="stacking-card w-[1200] h-[600px] bg-neutral-500 rounded-lg border-2 border-neutral-500 [grid-area:1/1/2/2] flex items-center justify-center text-xl font-semibold">
-              Third card
-            </div>
-            <div className="stacking-card w-[1200] h-[600px] bg-neutral-500 rounded-lg border-2 border-neutral-500 [grid-area:1/1/2/2] flex items-center justify-center text-xl font-semibold">
-              Fourth card
+              Three card
             </div>
           </div>
         </div>

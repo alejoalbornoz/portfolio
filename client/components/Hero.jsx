@@ -1,50 +1,94 @@
 "use client";
 
-import { useRef } from "react";
-import { useGSAP } from "@gsap/react";
+import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { SplitText } from "gsap/SplitText";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export default function Hero() {
-  const titleRef = useRef(null);
-  const paraRef = useRef(null);
+  const sectionRef = useRef(null);
+  const line1Ref = useRef(null);
+  const line2Ref = useRef(null);
 
-  useGSAP(() => {
-    gsap.registerPlugin(SplitText, ScrollTrigger);
-    const split = new SplitText(titleRef.current, { type: "chars" });
-    const chars = split.chars;
-    const tl = gsap.timeline();
+  const line1 = "Hola";
+  const line2 = "soy Alejo";
 
-    tl.set(chars, { opacity: 0, y: 80 })
-      .to(chars, {
-        opacity: 1,
-        y: 0,
-        stagger: 0.05,
-        ease: "power3.out",
-        duration: 1,
-      })
+  useEffect(() => {
+    const lines = [line1Ref.current, line2Ref.current];
+    if (!lines[0] || !lines[1]) return;
 
-      .fromTo(
-        paraRef.current,
-        { opacity: 0, y: 20 },
-        { opacity: 1, y: 0, duration: 0.9, ease: "power2.out" },
-        "+=0.2"
-      );
+    lines.forEach((line, index) => {
+      line.innerHTML = "";
+      const text = index === 0 ? line1 : line2;
+
+      text.split("").forEach((char) => {
+        const wrapper = document.createElement("span");
+        wrapper.className = "relative inline-block will-change-transform";
+
+        const fill = document.createElement("span");
+        fill.textContent = char === " " ? "\u00A0" : char;
+        fill.className = "text-fill block relative z-10";
+
+        const outline = document.createElement("span");
+        outline.textContent = char === " " ? "\u00A0" : char;
+        outline.className =
+          "text-outline block absolute top-0 left-0 z-20 pointer-events-none";
+
+        wrapper.appendChild(fill);
+        wrapper.appendChild(outline);
+        line.appendChild(wrapper);
+      });
+    });
+
+    const letters = sectionRef.current.querySelectorAll("span");
+
+    gsap.set(letters, { y: 0, x: 0, rotation: 0, opacity: 1 });
+
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: sectionRef.current,
+        start: "top top",
+        end: "+=1000",
+        scrub: 1,
+        pin: true,
+        anticipatePin: 1,
+      },
+    });
+
+    tl.to(letters, {
+      y: () => gsap.utils.random(-300, -150),
+      x: () => gsap.utils.random(-200, 200),
+      rotation: () => gsap.utils.random(-60, 60),
+      opacity: 0,
+      ease: "power2.out",
+      stagger: { each: 0.03, from: "center" },
+      duration: 10,
+    });
+
+    return () => {
+      ScrollTrigger.getAll().forEach((t) => t.kill());
+      gsap.killTweensOf(letters);
+    };
   }, []);
 
   return (
-    <main className="overflow-x-hidden text-[#eacbf3] font-bold text-left">
-      <section className="relative flex flex-col justify-center items-center h-[70vh] overflow-hidden">
-        <div className="relative z-10">
-          <h1 ref={titleRef} className="text-[100px]  leading-[0.9] ">
-            Alejo <br /> Albornoz
-          </h1>
-          <p ref={paraRef} className="text-[#af98b6] text-[80px] ">
+    <>
+      <section ref={sectionRef} className="h-screen relative">
+        <div className="h-screen flex flex-col items-center justify-center sticky top-0 ">
+          <h1
+            ref={line1Ref}
+            className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px] mb-4"
+          />
+          <h1
+            ref={line2Ref}
+            className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px]"
+          />
+          <p className="pt-10 text-[20px] text-gray-400">
             Desarrollador FullStack
           </p>
         </div>
       </section>
-    </main>
+    </>
   );
 }
