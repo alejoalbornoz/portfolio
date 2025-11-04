@@ -1,5 +1,10 @@
 import type { Metadata } from "next";
-import { Libre_Caslon_Display, Permanent_Marker, Reddit_Sans, Anton } from "next/font/google";
+import {
+  Libre_Caslon_Display,
+  Sora,
+  Reddit_Sans,
+  Anton,
+} from "next/font/google";
 import "./globals.css";
 
 const libreCaslonDisplay = Libre_Caslon_Display({
@@ -12,8 +17,8 @@ const anton = Anton({
   weight: ["400"],
 });
 
-const permanentMarker = Permanent_Marker({
-  variable: "--font-permanent-marker",
+const sora = Sora({
+  variable: "--font-sora",
   weight: ["400"],
 });
 
@@ -34,7 +39,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${libreCaslonDisplay.variable} ${permanentMarker.variable} ${redditSansFont.variable}`}>
+      <body
+        className={`${libreCaslonDisplay.variable} ${anton.variable} ${redditSansFont.variable} ${sora.variable}`}
+      >
         {children}
       </body>
     </html>

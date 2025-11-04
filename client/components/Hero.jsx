@@ -10,6 +10,7 @@ export default function Hero() {
   const sectionRef = useRef(null);
   const line1Ref = useRef(null);
   const line2Ref = useRef(null);
+  const subtitleRef = useRef(null);
 
   const line1 = "Hola";
   const line2 = "soy Alejo";
@@ -49,7 +50,7 @@ export default function Hero() {
       scrollTrigger: {
         trigger: sectionRef.current,
         start: "top top",
-        end: "+=1000",
+        end: "+=2000",
         scrub: 1,
         pin: true,
         anticipatePin: 1,
@@ -64,7 +65,16 @@ export default function Hero() {
       ease: "power2.out",
       stagger: { each: 0.03, from: "center" },
       duration: 10,
-    });
+    }).to(
+      subtitleRef.current,
+      {
+        opacity: 0,
+        y: -50,
+        ease: "power2.inOut",
+        duration: 5,
+      },
+      0
+    );
 
     return () => {
       ScrollTrigger.getAll().forEach((t) => t.kill());
@@ -73,22 +83,23 @@ export default function Hero() {
   }, []);
 
   return (
-    <>
-      <section ref={sectionRef} className="h-screen relative">
-        <div className="h-screen flex flex-col items-center justify-center sticky top-0 ">
-          <h1
-            ref={line1Ref}
-            className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px] mb-4"
-          />
-          <h1
-            ref={line2Ref}
-            className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px]"
-          />
-          <p className="pt-10 text-[20px] text-gray-400">
-            Desarrollador FullStack
-          </p>
-        </div>
-      </section>
-    </>
+    <section ref={sectionRef} className="h-[20vh] relative">
+      <div
+        className="h-screen flex flex-col items-center justify-center sticky top-0 "
+  
+      >
+        <h1
+          ref={line1Ref}
+          className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px] mb-4"
+        />
+        <h1
+          ref={line2Ref}
+          className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px]"
+        />
+        <p ref={subtitleRef} className="pt-10 text-[30px] text-[#4A4A4A]">
+          Desarrollador FullStack
+        </p>
+      </div>
+    </section>
   );
 }

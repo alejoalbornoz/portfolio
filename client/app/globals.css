@@ -23,10 +23,6 @@ ul {
   filter: brightness(0) invert(1); 
 }
 
-
-
-
-/* global.css (asegúrate que tailwind lo importe y no se purgue) */
 .text-fill {
   color: #003AFF;
   position: relative;
