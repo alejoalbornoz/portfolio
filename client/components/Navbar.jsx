@@ -26,7 +26,7 @@ export default function Navbar() {
 
   return (
     <nav>
-      <div className="fixed z-50 w-full pl-20 pr-20 text-[#1022ff] font-[sora]">
+      <div className="fixed z-50 w-full pl-20 pr-20 text-[#2c3d33] font-[sora]">
         <div className="flex justify-between items-center px-6 py-4 text-[20px] cursor-pointer ">
           {/* Logo a la izquierda */}
           <a href="#home" className="flex items-center gap-2 ">
@@ -44,6 +44,7 @@ export default function Navbar() {
             })}
           </ul>
         </div>
+        <div className="border border-[#0000001c]"></div>
       </div>
     </nav>
   );

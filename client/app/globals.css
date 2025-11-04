@@ -6,7 +6,8 @@
 body {
   /* background-image: url("/image-mesh-gradient5.png"); color tipo papel */
   background-color: #fffcf5;
-  color: #1022ff;
+  /* color: #1022ff; */
+  color: #2c3d33;
   background-repeat: no-repeat;
   position: relative;
   font-family: var(--font-Reddit_Sans), serif;
@@ -24,17 +25,18 @@ ul {
 }
 
 .text-fill {
-  color: #003AFF;
+  /* color: #003AFF; */
+  color: #2c3d33;
   position: relative;
   z-index: 10;
 }
 
 .text-outline {
   color: transparent;
-  -webkit-text-stroke: 3px #003AFF;       /* Chrome/Safari (WebKit) */
+  -webkit-text-stroke: 3px #2c3d33;       /* Chrome/Safari (WebKit) */
   -webkit-text-fill-color: transparent;   /* Safari */
   /* propiedad no estándar (algunos navegadores la ignoran): */
-  text-stroke: 3px #003AFF;
+  text-stroke: 3px #2c3d33;
   position: absolute;
   top: 0;
   left: 0;

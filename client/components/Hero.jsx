@@ -96,7 +96,7 @@ export default function Hero() {
           ref={line2Ref}
           className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px]"
         />
-        <p ref={subtitleRef} className="pt-10 text-[30px] text-[#4A4A4A]">
+        <p ref={subtitleRef} className="pt-10 text-[30px] text-[#1a1a1a]">
           Desarrollador FullStack
         </p>
       </div>
