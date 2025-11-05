@@ -43,9 +43,8 @@ export default function Projects() {
         className="horizontal w-[400%] h-screen flex flex-nowrap"
       >
         <section className="panel w-screen h-full flex items-center justify-center  shrink-0">
-          <div className="flex flex-row justify-center items-center bg-[#1a1a1a] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
+          <div className="flex flex-row justify-center items-center bg-[#2c3d33] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
             <div className="relative w-1/2 h-[500px] bg-black m-20 rounded-4xl">
-              
               <Image
                 src="/images/laptop.png"
                 alt="Laptop"
@@ -69,7 +68,7 @@ export default function Projects() {
           </div>
         </section>
         <section className="panel w-screen h-full flex items-center justify-center shrink-0">
-          <div className="flex flex-row justify-center items-center bg-[#1a1a1a] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
+          <div className="flex flex-row justify-center items-center bg-[#2c3d33] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
             <div className="relative w-1/2 h-[500px] bg-black m-20 rounded-4xl">
               <Image
                 src="/images/laptop-project2.png"
@@ -94,7 +93,7 @@ export default function Projects() {
           </div>
         </section>
         <section className="panel w-screen h-full flex items-center justify-center shrink-0">
-          <div className="flex flex-row justify-center items-center bg-[#1a1a1a] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
+          <div className="flex flex-row justify-center items-center bg-[#2c3d33] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
             <div className="relative w-1/2 h-[500px] bg-black m-20 rounded-4xl">
               {/* <Image
                 src="/images/laptop-project2.png"
