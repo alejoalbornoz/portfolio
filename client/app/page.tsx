@@ -2,7 +2,7 @@
 import Hero from "../components/Hero";
 import Navbar from "../components/Navbar";
 import Projects from "../components/Projects";
-import About from "../components/About";
+import SwipeSection from "../components/SwipeSection";
 
 
 export default function Home() {
@@ -11,7 +11,7 @@ export default function Home() {
       <Navbar />
       <Hero />
       <Projects />
-      <About />
+      <SwipeSection />
     </main>
   );
 }
