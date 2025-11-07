@@ -14,19 +14,23 @@ export default function Projects() {
   const horizontalContainerRef = useRef(null);
 
   useEffect(() => {
-    // Horizontal scrolling section
-    const horizontalSections = gsap.utils.toArray(".horizontal .panel");
+    // Solo activar scroll horizontal en desktop
+    const mm = gsap.matchMedia();
 
-    gsap.to(horizontalSections, {
-      xPercent: -100 * (horizontalSections.length - 1),
-      ease: "none",
-      scrollTrigger: {
-        trigger: ".horizontal",
-        pin: true,
-        scrub: 1,
-        end: "+=3500",
-        markers: false,
-      },
+    mm.add("(min-width: 1024px)", () => {
+      const horizontalSections = gsap.utils.toArray(".horizontal .panel");
+
+      gsap.to(horizontalSections, {
+        xPercent: -100 * (horizontalSections.length - 1),
+        ease: "none",
+        scrollTrigger: {
+          trigger: ".horizontal",
+          pin: true,
+          scrub: 1,
+          end: "+=3500",
+          markers: false,
+        },
+      });
     });
 
     // Cleanup
@@ -37,14 +41,15 @@ export default function Projects() {
 
   return (
     <div className="overflow-x-hidden">
-      {/* Horizontal Scroll Container */}
+      {/* Horizontal Scroll Container - Desktop / Vertical Scroll - Mobile */}
       <div
         ref={horizontalContainerRef}
-        className="horizontal w-[400%] h-screen flex flex-nowrap"
+        className="horizontal lg:w-[400%] w-full lg:h-screen lg:flex lg:flex-nowrap"
       >
-        <section className="panel w-screen h-full flex items-center justify-center  shrink-0">
-          <div className="flex flex-row justify-center items-center bg-[#2c3d33] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
-            <div className="relative w-1/2 h-[500px] bg-black m-20 rounded-4xl">
+        {/* Panel 1 */}
+        <section className="panel lg:w-screen w-full lg:h-full min-h-screen flex items-center justify-center lg:shrink-0 py-8 lg:py-0">
+          <div className="relative flex flex-col lg:flex-row justify-center items-center bg-[#2c3d33] lg:h-[800px] w-[90%] max-w-[1400px] border border-[#2c3d33] shadow-sm rounded-3xl lg:rounded-4xl p-6 lg:p-0">
+            <div className="relative w-full lg:w-1/2 h-[300px] lg:h-[500px] bg-[#fffcf5] lg:m-20 mb-6 lg:mb-0 rounded-3xl lg:rounded-4xl overflow-hidden">
               <Image
                 src="/images/laptop.png"
                 alt="Laptop"
@@ -52,11 +57,14 @@ export default function Projects() {
                 className="object-cover"
               />
             </div>
-            <div className="w-1/2 p-2">
-              <h1 className="text-[#f9f9f9]  text-6xl font-bold">
+            <div className="w-full  lg:w-1/2 lg:p-2 px-4 lg:px-0">
+              <span className="text-[#f9f9f9] text-base lg:text-xl font-semibold">
+                Proyecto #1
+              </span>
+              <h1 className="text-[#f9f9f9] mt-3 pl-2 lg:mt-5 text-3xl lg:text-6xl font-bold">
                 Tienda E-Commerce de Mates
               </h1>
-              <p className="text-[#b3b3b3] text-2xl pt-10">
+              <p className="text-[#b3b3b3] text-base lg:text-2xl pt-6 lg:pt-10">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
                 iure inventore numquam veniam aliquam sit iusto neque unde, sed
                 error facilis possimus atque esse tenetur, incidunt repudiandae
@@ -67,9 +75,11 @@ export default function Projects() {
             </div>
           </div>
         </section>
-        <section className="panel w-screen h-full flex items-center justify-center shrink-0">
-          <div className="flex flex-row justify-center items-center bg-[#2c3d33] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
-            <div className="relative w-1/2 h-[500px] bg-black m-20 rounded-4xl">
+
+        {/* Panel 2 */}
+        <section className="panel lg:w-screen w-full lg:h-full min-h-screen flex items-center justify-center lg:shrink-0 py-8 lg:py-0">
+          <div className="relative flex flex-col lg:flex-row justify-center items-center bg-[#2c3d33] lg:h-[800px] w-[90%] max-w-[1400px] border border-[#2c3d33] shadow-sm rounded-3xl lg:rounded-4xl p-6 lg:p-0">
+            <div className="relative w-full lg:w-1/2 h-[300px] lg:h-[500px] bg-[#fffcf5] lg:m-20 mb-6 lg:mb-0 rounded-3xl lg:rounded-4xl overflow-hidden">
               <Image
                 src="/images/laptop-project2.png"
                 alt="Laptop 2"
@@ -77,11 +87,14 @@ export default function Projects() {
                 className="object-cover"
               />
             </div>
-            <div className="w-1/2 p-2">
-              <h1 className="text-[#f9f9f9]  text-6xl font-bold">
+            <div className="w-full lg:w-1/2 lg:p-2 px-4 lg:px-0">
+              <span className="text-[#f9f9f9] text-base lg:text-xl font-semibold">
+                Proyecto #2
+              </span>
+              <h1 className="text-[#f9f9f9] mt-3 lg:mt-5 text-3xl lg:text-6xl font-bold">
                 Sistema de Reservas para Restaurante
               </h1>
-              <p className="text-[#b3b3b3] text-2xl pt-10">
+              <p className="text-[#b3b3b3] text-base lg:text-2xl pt-6 lg:pt-10">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
                 iure inventore numquam veniam aliquam sit iusto neque unde, sed
                 error facilis possimus atque esse tenetur, incidunt repudiandae
@@ -92,21 +105,26 @@ export default function Projects() {
             </div>
           </div>
         </section>
-        <section className="panel w-screen h-full flex items-center justify-center shrink-0">
-          <div className="flex flex-row justify-center items-center bg-[#2c3d33] h-[800] w-[1400px] border border-[#2c3d33] shadow-sm rounded-4xl ">
-            <div className="relative w-1/2 h-[500px] bg-black m-20 rounded-4xl">
+
+        {/* Panel 3 */}
+        <section className="panel lg:w-screen w-full lg:h-full min-h-screen flex items-center justify-center lg:shrink-0 py-8 lg:py-0">
+          <div className="relative flex flex-col lg:flex-row justify-center items-center bg-[#2c3d33] lg:h-[800px] w-[90%] max-w-[1400px] border border-[#2c3d33] shadow-sm rounded-3xl lg:rounded-4xl p-6 lg:p-0">
+            <div className="relative w-full lg:w-1/2 h-[300px] lg:h-[500px] bg-[#fffcf5] lg:m-20 mb-6 lg:mb-0 rounded-3xl lg:rounded-4xl overflow-hidden">
               {/* <Image
-                src="/images/laptop-project2.png"
-                alt="Laptop 2"
+                src="/images/laptop-project3.png"
+                alt="Laptop 3"
                 fill
                 className="object-cover"
               /> */}
             </div>
-            <div className="w-1/2 p-2">
-              <h1 className="text-[#f9f9f9]  text-6xl font-bold">
+            <div className="w-full lg:w-1/2 lg:p-2 px-4 lg:px-0">
+              <span className="text-[#f9f9f9] text-base lg:text-xl font-semibold">
+                Proyecto #3
+              </span>
+              <h1 className="text-[#f9f9f9] mt-3 pl-2 lg:mt-5 text-3xl lg:text-6xl font-bold">
                 Lorem ipsum dolor sit.
               </h1>
-              <p className="text-[#b3b3b3] text-2xl pt-10">
+              <p className="text-[#b3b3b3] text-base lg:text-2xl pt-6 lg:pt-10">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam
                 iure inventore numquam veniam aliquam sit iusto neque unde, sed
                 error facilis possimus atque esse tenetur, incidunt repudiandae

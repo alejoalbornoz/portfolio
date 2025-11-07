@@ -84,19 +84,16 @@ export default function Hero() {
 
   return (
     <section ref={sectionRef} className="h-[20vh] relative">
-      <div
-        className="h-screen flex flex-col items-center justify-center sticky top-0 "
-  
-      >
+      <div className="h-screen flex flex-col items-center justify-center sticky top-0">
         <h1
           ref={line1Ref}
-          className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px] mb-4"
+          className="relative font-[Anton] tracking-tight leading-[0.9] text-[80px] sm:text-[120px] md:text-[180px] lg:text-[220px] xl:text-[250px] mb-2 sm:mb-4 px-4"
         />
         <h1
           ref={line2Ref}
-          className="relative font-[Anton] tracking-tight leading-[0.9] text-[200px]"
+          className="relative font-[Anton] tracking-tight leading-[0.9] text-[80px] sm:text-[120px] md:text-[180px] lg:text-[220px] xl:text-[250px] px-4"
         />
-        <p ref={subtitleRef} className="pt-10 text-[30px] text-[#1a1a1a]">
+        <p ref={subtitleRef} className="pt-6 sm:pt-8 md:pt-10 text-[16px] sm:text-[20px] md:text-[24px] lg:text-[28px] xl:text-[30px] text-[#1a1a1a] px-4 text-center">
           Desarrollador FullStack
         </p>
       </div>
