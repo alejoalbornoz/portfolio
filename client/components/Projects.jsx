@@ -122,7 +122,7 @@ export default function Projects() {
                 Proyecto #3
               </span>
               <h1 className="text-[#f9f9f9] mt-3 pl-2 lg:mt-5 text-3xl lg:text-6xl font-bold">
-                Lorem ipsum dolor sit.
+                Saas de Obra Social
               </h1>
               <p className="text-[#b3b3b3] text-base lg:text-2xl pt-6 lg:pt-10">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam

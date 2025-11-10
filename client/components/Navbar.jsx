@@ -105,6 +105,15 @@ export default function Navbar() {
             isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
           }`}
         >
+          {/* Close Button */}
+          <button
+            className="absolute top-6 right-6 text-[#fffcf5] cursor-pointer z-50"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-label="Close menu"
+          >
+            <X size={32} />
+          </button>
+
           <ul className="flex flex-col items-center justify-center h-full gap-8 text-[#fffcf5] text-[24px] cursor-pointer">
             <li>
               <a href="#home" onClick={handleLinkClick}>
