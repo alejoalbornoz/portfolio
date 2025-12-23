@@ -1,7 +1,7 @@
+import React from "react";
 import Image from "next/image";
 
-// components/AboutSection.jsx
-export default function About() {
+const TechStackDisplay = () => {
   const stacks = [
     {
       title: "Stack Frontend",
@@ -44,11 +44,9 @@ export default function About() {
       ],
     },
   ];
+
   return (
-    <section
-      className="panel absolute inset-0 flex flex-col md:flex-row items-center justify-center rounded-b-[60px] md:rounded-b-[100px] lg:rounded-b-[150px] bg-[#fffcf5] text-[#2c3d33] font-[sora] px-4 sm:px-6 md:px-12 py-8 md:py-0"
-      id="about"
-    >
+    <div className="min-h-screen bg-[#fffcf5] text-[#2c3d33] p-8">
       <div className="max-w-7xl mx-auto h-screen flex flex-col justify-center">
         <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-tight text-center mb-6">
           Mis Herramientas & Tecnologías
@@ -63,7 +61,7 @@ export default function About() {
           {stacks.map((stack, idx) => (
             <div
               key={idx}
-              className="bg-[#2c3d33e3] rounded-2xl border border-[#2c3d33] border-opacity-10 overflow-hidden shadow-sm"
+              className="bg-white rounded-2xl border border-[#2c3d33] border-opacity-10 overflow-hidden shadow-sm"
             >
               {/* Terminal Header */}
               <div className="bg-[#f5f1e8] border-b border-[#2c3d33] border-opacity-10 px-4 py-3 flex items-center gap-2">
@@ -100,7 +98,7 @@ export default function About() {
                         height={48}
                       />
                     </div>
-                    <span className="text-xs text-white opacity-70">
+                    <span className="text-xs text-[#2c3d33] opacity-70">
                       {item.name}
                     </span>
                   </div>
@@ -110,6 +108,8 @@ export default function About() {
           ))}
         </div>
       </div>
-    </section>
+    </div>
   );
-}
+};
+
+export default TechStackDisplay;

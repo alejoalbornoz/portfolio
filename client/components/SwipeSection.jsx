@@ -115,7 +115,7 @@ export default function SwipeSection() {
       </div>
 
       <div className="h-[10vh] min-h-[60px] bg-[#101010] flex items-center justify-center text-white text-sm sm:text-base md:text-lg lg:text-[20px] px-4">
-        Derechos Reservados © 2025 
+        Derechos Reservados © 2025
       </div>
     </div>
   );
