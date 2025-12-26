@@ -40,7 +40,7 @@ export default function CreativeSpace() {
                 <span className=" font-semibold">
                   Honours Degree in Design from UID
                 </span>
-                , Gandhinagar. Excited to take on new design challenges.
+                , lorem100.
               </p>
             </div>
           </div>
