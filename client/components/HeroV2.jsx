@@ -47,13 +47,13 @@ export default function CreativeSpace() {
 
           {/* Right Column - Image */}
           <div className="flex justify-center lg:justify-end">
-            <div className="rounded-3xl overflow-hidden shadow-2xl max-w-md translate-x-30">
+            <div className="rounded-4xl overflow-hidden shadow-2xl max-w-lg -translate-y-16 translate-x-50">
               <Image
                 src="/images/imagenalejo2.jpeg"
                 alt="Alejo Albornoz"
                 className="w-full h-full object-cover"
-                width={1000}
-                height={1000}
+                width={1200}
+                height={1200}
               />
             </div>
           </div>

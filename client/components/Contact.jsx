@@ -24,7 +24,7 @@ export default function Contact() {
       </div>
 
       <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[150px] xl:text-[200px] font-extrabold font-[sora] leading-none mt-6 sm:mt-8 md:mt-12 text-center">
-        GRACIAS
+        LISTOS?
       </h1>
     </section>
   );
