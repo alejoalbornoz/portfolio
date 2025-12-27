@@ -4,11 +4,11 @@ export const navLinks = [
     title: "Projectos",
   },
   {
-    id: "about",
-    title: "Acerca de mi",
+    id: "technologies",
+    title: "Tecnologías",
   },
   {
     id: "contact",
-    title: "Contact",
+    title: "Contacto",
   },
 ];

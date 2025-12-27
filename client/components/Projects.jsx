@@ -76,7 +76,7 @@ export default function Projects() {
               </p>
 
               <a
-                href="https://github.com/tu-usuario/tu-repo"
+                href="https://github.com/alejoalbornoz/Mates-E-Commerce"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 mt-8 px-6 py-3 
@@ -124,7 +124,7 @@ export default function Projects() {
                 pensado para un entorno real de producción.
               </p>
               <a
-                href="https://github.com/tu-usuario/tu-repo"
+                href="https://github.com/alejoalbornoz/MeatResturant"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 mt-8 px-6 py-3 
@@ -174,7 +174,7 @@ export default function Projects() {
               </p>
 
               <a
-                href="https://github.com/tu-usuario/tu-repo"
+                href="https://github.com/alejoalbornoz/Saas-ObraSocial"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group inline-flex items-center gap-3 mt-8 px-6 py-3 

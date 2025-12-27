@@ -32,22 +32,25 @@ export default function Navbar() {
     const checkDarkSection = () => {
       const contactPanel = document.querySelector("#contact");
       const aboutPanel = document.querySelector("#about");
-      
+
       if (!contactPanel || !aboutPanel) return;
 
       const contactRect = contactPanel.getBoundingClientRect();
       const aboutRect = aboutPanel.getBoundingClientRect();
-      
+
       const contactTransform = window.getComputedStyle(contactPanel).transform;
       const aboutTransform = window.getComputedStyle(aboutPanel).transform;
-      
+
       const contactInView = contactRect.top <= 100 && contactRect.bottom >= 100;
-      const aboutIsUp = aboutTransform.includes("matrix(1, 0, 0, 1, 0, -") || 
-                        aboutRect.top < -window.innerHeight * 0.5;
-      const contactNotMoved = !contactTransform.includes("matrix(1, 0, 0, 1, 0, -");
-      
+      const aboutIsUp =
+        aboutTransform.includes("matrix(1, 0, 0, 1, 0, -") ||
+        aboutRect.top < -window.innerHeight * 0.5;
+      const contactNotMoved = !contactTransform.includes(
+        "matrix(1, 0, 0, 1, 0, -"
+      );
+
       const isContactActive = contactInView && aboutIsUp && contactNotMoved;
-      
+
       setIsOnDarkBg(isContactActive);
     };
 
@@ -62,13 +65,16 @@ export default function Navbar() {
 
   return (
     <nav>
-      <div 
+      <div
         className={`fixed z-50 w-full px-4 sm:px-8 md:px-12 lg:px-20 font-[sora] transition-colors duration-500 ${
           isOnDarkBg ? "text-[#fffcf5]" : "text-[#2c3d33]"
         }`}
       >
         <div className="flex justify-between items-center px-4 sm:px-6 py-4 text-[16px] sm:text-[18px] md:text-[20px]">
-          <a href="#home" className="flex items-center gap-2 cursor-pointer z-50">
+          <a
+            href="#home"
+            className="flex items-center gap-2 cursor-pointer z-50"
+          >
             <p>Inicio</p>
           </a>
 
@@ -93,7 +99,7 @@ export default function Navbar() {
           </button>
         </div>
 
-        <div 
+        <div
           className={`border transition-colors duration-500 ${
             isOnDarkBg ? "border-[#fffcf5]" : "border-[#0000001c]"
           }`}

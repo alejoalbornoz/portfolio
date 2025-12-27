@@ -91,7 +91,7 @@ export default function About() {
                     key={itemIdx}
                     className="flex flex-col items-center gap-2"
                   >
-                    <div className="w-14 h-14 rounded-lg bg-[#f5f1e8] border border-[#2c3d33] border-opacity-10 flex items-center justify-center p-2 hover:bg-[#ebe7dc] transition-colors">
+                    <div className="w-14 h-14 rounded-lg bg-[#f5f1e87e] border border-[#2c3d33] border-opacity-10 flex items-center justify-center p-2 hover:bg-[#ebe7dc] transition-colors">
                       <Image
                         src={`/icons/${item.icon}`}
                         alt={item.name}

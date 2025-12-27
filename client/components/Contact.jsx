@@ -11,7 +11,9 @@ export default function Contact() {
 
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 md:gap-6 w-full">
           <button className="flex-1 border border-[#f9f9f9]/70 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-[#f9f9f9]/10 transition-colors duration-300">
-            GitHub
+            <a href="https://github.com/alejoalbornoz" target="_blank">
+              GitHub
+            </a>
           </button>
           <button className="flex-1 border border-[#f9f9f9]/70 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-[#f9f9f9]/10 transition-colors duration-300">
             Ver CV
@@ -24,7 +26,7 @@ export default function Contact() {
       </div>
 
       <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-[150px] xl:text-[200px] font-extrabold font-[sora] leading-none mt-6 sm:mt-8 md:mt-12 text-center">
-        LISTOS?
+        HABLEMOS
       </h1>
     </section>
   );
