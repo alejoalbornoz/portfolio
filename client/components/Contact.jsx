@@ -6,7 +6,7 @@ export default function Contact() {
     >
       <div className="flex flex-col items-center gap-3 sm:gap-4 md:gap-6 w-full max-w-2xl">
         <button className="w-full border border-[#f9f9f9]/70 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-[#f9f9f9]/10 transition-colors duration-300">
-          Dí Hola – ale.dev@gmail.com
+          Dí Hola – alejoalbornoz912@gmail.com
         </button>
 
         <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 md:gap-6 w-full">
@@ -21,7 +21,12 @@ export default function Contact() {
         </div>
 
         <button className="w-full border border-[#f9f9f9]/70 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-[#f9f9f9]/10 transition-colors duration-300">
-          LinkedIn
+          <a
+            href="https://www.linkedin.com/in/alejo-angel-albornoz-a8b700254/"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
         </button>
       </div>
 

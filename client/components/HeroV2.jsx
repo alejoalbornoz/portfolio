@@ -29,18 +29,13 @@ export default function CreativeSpace() {
             {/* Description */}
             <div className="space-y-4 text-gray-700 text-lg leading-relaxed">
               <p>
-                Hola, Soy{" "}
-                <span className=" font-semibold">Desarrollador FullStack</span>{" "}
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae
-                ullam explicabo obcaecati rerum aut alias ipsum facere quidem
-                provident odio. Ut nobis non facilis. Autem, vel aspernatur
-                adipisci dolor cum ullam nemo quasi tenetur perspiciatis culpa
-                temporibus alias, dolorem deserunt odio voluptas suscipit magnam
-                deleniti quis nisi minima necessitatibus maiores.{" "}
-                <span className=" font-semibold">
-                  Honours Degree in Design from UID
-                </span>
-                , lorem100.
+                Hola, soy{" "}
+                <span className="font-semibold">Desarrollador FullStack</span>.
+                Escribo código para resolver problemas reales y construir
+                experiencias web sólidas. Me interesa entender el “por qué”
+                detrás de cada proyecto, no solo el “cómo”. Trabajo con
+                tecnologías modernas y una mentalidad clara: aprender, iterar y
+                mejorar en cada línea de código.
               </p>
             </div>
           </div>
