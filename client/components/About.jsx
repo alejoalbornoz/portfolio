@@ -47,19 +47,21 @@ export default function About() {
   return (
     <section
       className="panel absolute inset-0 flex flex-col md:flex-row items-center justify-center rounded-b-[60px] md:rounded-b-[100px] lg:rounded-b-[150px] bg-[#fffcf5] text-[#2c3d33] font-[sora] px-4 sm:px-6 md:px-12 py-8 md:py-0"
-      id="about"
+      id="technologies"
     >
-      <div className="max-w-7xl mx-auto h-screen flex flex-col justify-center">
-        <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-[70px] font-bold leading-tight text-center mb-6">
-          Mis Herramientas & Tecnologías
-        </h1>
-        <p className="text-center text-[#2c3d33] opacity-70 mb-12 text-lg">
-          El stack con el que desarrollo aplicaciones limpias, consistentes y
-          <br />
-          listas para producción.
-        </p>
+      <div className="max-w-7xl mx-auto">
+        {/* Header */}
+        <div className="text-center mb-14">
+          <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold mb-4">
+            Mis Herramientas & Tecnologías
+          </h2>
+          <p className="text-base sm:text-lg opacity-70 max-w-2xl mx-auto">
+            El stack con el que desarrollo aplicaciones limpias, consistentes y
+            listas para producción.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {stacks.map((stack, idx) => (
             <div
               key={idx}
@@ -78,7 +80,7 @@ export default function About() {
               </div>
 
               {/* Terminal Command */}
-              <div className="bg-[#f9f6ed] px-4 py-3 font-mono text-sm">
+              <div className="bg-[#f9f6ed] px-4 py-3 font-mono text-xs sm:text-sm">
                 <span className="text-green-600">→ </span>
                 <span className="text-[#2c3d33]">{stack.command}</span>
                 <span className="text-[#2c3d33] opacity-30 ml-2">▋</span>
@@ -91,7 +93,7 @@ export default function About() {
                     key={itemIdx}
                     className="flex flex-col items-center gap-2"
                   >
-                    <div className="w-14 h-14 rounded-lg bg-[#f5f1e87e] border border-[#2c3d33] border-opacity-10 flex items-center justify-center p-2 hover:bg-[#ebe7dc] transition-colors">
+                    <div className=" w-12 h-12 sm:w-14 sm:h-14 rounded-lg bg-[#f5f1e87e] border border-[#2c3d33] border-opacity-10 flex items-center justify-center p-2 hover:bg-[#ebe7dc] transition-colors">
                       <Image
                         src={`/icons/${item.icon}`}
                         alt={item.name}
@@ -100,7 +102,7 @@ export default function About() {
                         height={48}
                       />
                     </div>
-                    <span className="text-xs text-white opacity-70">
+                    <span className="text-[11px] sm:text-xs text-white opacity-70">
                       {item.name}
                     </span>
                   </div>

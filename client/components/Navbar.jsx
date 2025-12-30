@@ -31,7 +31,7 @@ export default function Navbar() {
   useEffect(() => {
     const checkDarkSection = () => {
       const contactPanel = document.querySelector("#contact");
-      const aboutPanel = document.querySelector("#about");
+      const aboutPanel = document.querySelector("#technologies");
 
       if (!contactPanel || !aboutPanel) return;
 
@@ -75,10 +75,10 @@ export default function Navbar() {
             href="#home"
             className="flex items-center gap-2 cursor-pointer z-50"
           >
-            <p>Inicio</p>
+            <a href="#home">Inicio</a>
           </a>
 
-          {/* Desktop Menu */}
+          {/* {/* Desktop Menu *s/} */}
           <ul className="hidden md:flex lg:gap-12 gap-7 cursor-pointer">
             {navLinks.map((link) => {
               return (

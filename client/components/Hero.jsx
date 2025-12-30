@@ -84,7 +84,7 @@ export default function Hero() {
 
   return (
     <section ref={sectionRef} className="h-[20vh] relative">
-      <div className="h-screen flex flex-col items-center justify-center sticky top-0">
+      <div className="h-screen flex flex-col items-center justify-center sticky top-0" >
         <h1
           ref={line1Ref}
           className="relative font-[Anton] tracking-tight leading-[0.9] text-[80px] sm:text-[120px] md:text-[180px] lg:text-[220px] xl:text-[250px] mb-2 sm:mb-4 px-4"
