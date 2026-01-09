@@ -1,7 +1,7 @@
 export default function Contact() {
   return (
     <section
-      className="panel absolute inset-0 flex flex-col items-center justify-center gap-4 sm:gap-6 bg-[#2c3d33] text-[#f9f9f9] font-[sora] px-4 sm:px-6"
+      className="panel relative md:absolute md:inset-0 flex flex-col items-center justify-center gap-6 bg-[#2c3d33] text-[#f9f9f9] font-[sora] px-4 sm:px-6 py-12 md:py-0"
       id="contact"
     >
       <div className="flex flex-col items-center gap-3 sm:gap-4 md:gap-6 w-full max-w-2xl">

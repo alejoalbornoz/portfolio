@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import About from "./About";
@@ -17,7 +17,19 @@ export default function SwipeSection() {
   const currentIndexRef = useRef(0);
   const allowScrollRef = useRef(true);
 
+  const [isDesktop, setIsDesktop] = useState(false);
+
+  // Detectar breakpoint
   useEffect(() => {
+    const update = () => setIsDesktop(window.innerWidth >= 768);
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
+
+  useEffect(() => {
+    if (!isDesktop) return; // 📱 En mobile no se monta GSAP
+
     const swipePanels = gsap.utils.toArray(".swipe-section .panel");
     const isTouch = ScrollTrigger.isTouch;
 
@@ -41,15 +53,18 @@ export default function SwipeSection() {
         intentObserverRef.current?.disable();
         return;
       }
+
       allowScrollRef.current = false;
       scrollTimeoutRef.current.restart(true);
 
       const target = isScrollingDown
         ? swipePanels[currentIndexRef.current]
         : swipePanels[index];
+
       gsap.to(target, {
         yPercent: isScrollingDown ? -100 : 0,
         duration: 0.75,
+        ease: "power2.out",
       });
 
       currentIndexRef.current = index;
@@ -76,6 +91,7 @@ export default function SwipeSection() {
       onDisable: (self) =>
         document.removeEventListener("scroll", self._restoreScroll),
     });
+
     intentObserverRef.current.disable();
 
     ScrollTrigger.create({
@@ -96,21 +112,28 @@ export default function SwipeSection() {
     });
 
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      ScrollTrigger.getAll().forEach((t) => t.kill());
       intentObserverRef.current?.kill();
       scrollTimeoutRef.current?.kill();
     };
-  }, []);
+  }, [isDesktop]); // eslint no se queja porque solo depende del breakpoint
 
   return (
     <div>
-      <div className="flex justify-center items-center h-screen">
+      <div className="flex justify-center items-center">
         <div
           ref={swipeSectionRef}
-          className="swipe-section relative h-screen w-full overflow-hidden"
+          className={`swipe-section relative w-full ${
+            isDesktop ? "h-screen overflow-hidden" : "h-auto"
+          }`}
         >
-          <About />
-          <Contact />
+          <div className="panel md:absolute md:inset-0 relative">
+            <About />
+          </div>
+
+          <div className="panel md:absolute md:inset-0 relative">
+            <Contact />
+          </div>
         </div>
       </div>
 

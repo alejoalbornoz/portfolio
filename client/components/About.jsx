@@ -46,7 +46,7 @@ export default function About() {
   ];
   return (
     <section
-      className="panel absolute inset-0 flex flex-col md:flex-row items-center justify-center rounded-b-[60px] md:rounded-b-[100px] lg:rounded-b-[150px] bg-[#fffcf5] text-[#2c3d33] font-[sora] px-4 sm:px-6 md:px-12 py-8 md:py-0"
+      className="panel relative md:absolute md:inset-0 flex flex-col md:flex-row items-center justify-center rounded-b-[40px] sm:rounded-b-[60px] md:rounded-b-[100px] lg:rounded-b-[150px] bg-[#fffcf5] text-[#2c3d33] font-[sora] px-4 sm:px-6 md:px-12 py-12 md:py-0"
       id="technologies"
     >
       <div className="max-w-7xl mx-auto">
