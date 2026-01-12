@@ -21,10 +21,7 @@ export default function Contact() {
         </div>
 
         <button className="w-full border border-[#f9f9f9]/70 py-3 sm:py-4 rounded-full text-sm sm:text-base md:text-lg font-medium hover:bg-[#f9f9f9]/10 transition-colors duration-300">
-          <a
-            href="https://www.linkedin.com/in/alejo-angel-albornoz-a8b700254/"
-            target="_blank"
-          >
+          <a href="https://www.linkedin.com/in/alejoalbornozz/" target="_blank">
             LinkedIn
           </a>
         </button>

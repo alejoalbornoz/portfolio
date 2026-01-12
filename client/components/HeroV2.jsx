@@ -5,11 +5,11 @@ export default function CreativeSpace() {
   return (
     <section
       id="home"
-      className="min-h-screen flex items-center px-4 sm:px-6 lg:px-12 py-16"
+      className="min-h-screen flex items-center px-4  sm:px-6 lg:px-12 py-16"
     >
       <div className="max-w-7xl mx-auto w-full">
         {/* Welcome Badge */}
-        <div className="mb-12 flex justify-center lg:justify-start">
+        <div className="mb-12 translate-y-3 flex justify-center lg:justify-start ">
           <div className="inline-flex items-center gap-3 border border-[#2c3d33] rounded-full px-5 py-2">
             <span className="text-xl">👋</span>
             <span className="text-[#2c3d33] font-medium text-sm sm:text-base">

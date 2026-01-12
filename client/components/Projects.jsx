@@ -14,7 +14,9 @@ export default function Projects() {
   const horizontalContainerRef = useRef(null);
 
   useEffect(() => {
-    // Solo activar scroll horizontal en desktop
+    // Forzar un refresh inicial
+    ScrollTrigger.refresh();
+
     const mm = gsap.matchMedia();
 
     mm.add("(min-width: 1024px)", () => {
@@ -31,11 +33,23 @@ export default function Projects() {
           markers: false,
         },
       });
+
+      return () => {
+        // Cleanup específico para desktop
+        ScrollTrigger.getAll().forEach((st) => st.kill());
+      };
     });
 
-    // Cleanup
+    mm.add("(max-width: 1023px)", () => {
+      // Matar todos los ScrollTriggers en mobile
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      gsap.set(".horizontal .panel", { clearProps: "all" });
+    });
+
+    // Cleanup global
     return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      mm.revert();
+      ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
 
@@ -57,7 +71,7 @@ export default function Projects() {
                 className="object-cover"
               />
             </div>
-            <div className="w-full  lg:w-1/2 lg:p-2 px-4 lg:px-0">
+            <div className="w-full lg:w-1/2 lg:p-2 px-4 lg:px-0">
               <span className="text-[#f9f9f9] text-base lg:text-xl font-semibold">
                 Proyecto #1
               </span>
