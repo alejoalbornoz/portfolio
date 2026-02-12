@@ -22,7 +22,7 @@ export default function Projects() {
         scrollTriggerRef.current = null;
       }
       ScrollTrigger.getAll().forEach((st) => st.kill());
-      
+
       // Limpiar propiedades inline de GSAP
       gsap.set(".horizontal .panel", { clearProps: "all" });
 
@@ -89,8 +89,10 @@ export default function Projects() {
                 src="/images/laptop.png"
                 alt="Laptop"
                 fill
+                sizes="(max-width: 1024px) 90vw, 50vw"
                 className="object-cover"
               />
+              s
             </div>
             <div className="w-full lg:w-1/2 lg:p-2 px-4 lg:px-0">
               <span className="text-[#f9f9f9] text-base lg:text-xl font-semibold">
@@ -100,8 +102,8 @@ export default function Projects() {
                 Tienda E-Commerce de Mates
               </h1>
               <p className="text-[#b3b3b3] text-base lg:text-2xl pt-6 lg:pt-10">
-                E-commerce completo orientado a la venta de mates. El frontend está
-                construido con React y Vite para una experiencia rápida y
+                E-commerce completo orientado a la venta de mates. El frontend
+                está construido con React y Vite para una experiencia rápida y
                 fluida, mientras que el backend utiliza Express sobre Node.js
                 con MongoDB para la gestión de productos, usuarios y
                 autenticación. Incluye carrito de compras, manejo de sesiones y
@@ -138,6 +140,7 @@ export default function Projects() {
                 src="/images/laptop-project2.png"
                 alt="Laptop 2"
                 fill
+                sizes="(max-width: 1024px) 90vw, 50vw"
                 className="object-cover"
               />
             </div>
@@ -186,6 +189,7 @@ export default function Projects() {
                 src="/images/obrasocialsaas.png"
                 alt="Laptop 3"
                 fill
+                sizes="(max-width: 1024px) 90vw, 50vw"
                 className="object-cover"
               />
             </div>
