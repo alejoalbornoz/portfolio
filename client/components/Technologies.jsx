@@ -1,7 +1,7 @@
 import Image from "next/image";
 
-// components/AboutSection.jsx
-export default function About() {
+// components/Technologies.jsx
+export default function Technologies() {
   const stacks = [
     {
       title: "Stack Frontend",
@@ -46,10 +46,10 @@ export default function About() {
   ];
   return (
     <section
-      className="panel relative md:absolute md:inset-0 flex flex-col md:flex-row items-center justify-center rounded-b-[40px] sm:rounded-b-[60px] md:rounded-b-[100px] lg:rounded-b-[150px] bg-[#fffcf5] text-[#2c3d33] font-[sora] px-4 sm:px-6 md:px-12 py-12 md:py-0"
+      className="panel relative flex flex-col items-center justify-center rounded-b-[40px] sm:rounded-b-[60px] md:rounded-b-[100px] lg:rounded-b-[150px] bg-[#fffcf5] text-[#2c3d33] font-[sora] px-4 sm:px-6 md:px-12 py-12 md:py-20"
       id="technologies"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-7xl mx-auto w-full">
         {/* Header */}
         <div className="text-center mb-14">
           <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-[64px] font-bold mb-4">

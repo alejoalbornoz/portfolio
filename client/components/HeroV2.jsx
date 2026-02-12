@@ -35,11 +35,10 @@ export default function CreativeSpace() {
             <p className="text-gray-700 text-base sm:text-lg max-w-xl mx-auto lg:mx-0">
               Hola, soy{" "}
               <span className="font-semibold">Desarrollador FullStack</span>.
-              Escribo código para resolver problemas reales y construir
-              experiencias web sólidas. Me interesa entender el “por qué” detrás
-              de cada proyecto, no solo el “cómo”. Trabajo con tecnologías
-              modernas y una mentalidad clara: aprender, iterar y mejorar en
-              cada línea de código.
+              Transformo ideas en productos digitales mediante código limpio y
+              soluciones escalables. Mi enfoque está en construir interfaces
+              robustas que prioricen la experiencia del usuario y el rendimiento
+              técnico.
             </p>
           </div>
 

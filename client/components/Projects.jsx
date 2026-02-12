@@ -12,49 +12,70 @@ if (typeof window !== "undefined") {
 
 export default function Projects() {
   const horizontalContainerRef = useRef(null);
+  const scrollTriggerRef = useRef(null);
 
   useEffect(() => {
-    // Forzar un refresh inicial
-    ScrollTrigger.refresh();
+    const setupScrollTrigger = () => {
+      // Limpiar todo antes de crear nuevos triggers
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+        scrollTriggerRef.current = null;
+      }
+      ScrollTrigger.getAll().forEach((st) => st.kill());
+      
+      // Limpiar propiedades inline de GSAP
+      gsap.set(".horizontal .panel", { clearProps: "all" });
 
-    const mm = gsap.matchMedia();
+      // Solo crear ScrollTrigger en desktop
+      if (window.innerWidth >= 1024) {
+        const horizontalSections = gsap.utils.toArray(".horizontal .panel");
 
-    mm.add("(min-width: 1024px)", () => {
-      const horizontalSections = gsap.utils.toArray(".horizontal .panel");
+        const animation = gsap.to(horizontalSections, {
+          xPercent: -100 * (horizontalSections.length - 1),
+          ease: "none",
+          scrollTrigger: {
+            trigger: ".horizontal",
+            pin: true,
+            scrub: 1,
+            end: "+=3500",
+            markers: false,
+            invalidateOnRefresh: true,
+          },
+        });
 
-      gsap.to(horizontalSections, {
-        xPercent: -100 * (horizontalSections.length - 1),
-        ease: "none",
-        scrollTrigger: {
-          trigger: ".horizontal",
-          pin: true,
-          scrub: 1,
-          end: "+=3500",
-          markers: false,
-        },
-      });
+        scrollTriggerRef.current = animation.scrollTrigger;
+      }
 
-      return () => {
-        // Cleanup específico para desktop
-        ScrollTrigger.getAll().forEach((st) => st.kill());
-      };
-    });
+      // Refresh después de configurar
+      ScrollTrigger.refresh();
+    };
 
-    mm.add("(max-width: 1023px)", () => {
-      // Matar todos los ScrollTriggers en mobile
+    // Setup inicial
+    setupScrollTrigger();
+
+    // Debounce para resize
+    let resizeTimer;
+    const handleResize = () => {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setupScrollTrigger();
+      }, 250);
+    };
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+      clearTimeout(resizeTimer);
+      if (scrollTriggerRef.current) {
+        scrollTriggerRef.current.kill();
+      }
       ScrollTrigger.getAll().forEach((st) => st.kill());
       gsap.set(".horizontal .panel", { clearProps: "all" });
-    });
-
-    // Cleanup global
-    return () => {
-      mm.revert();
-      ScrollTrigger.getAll().forEach((st) => st.kill());
     };
   }, []);
-
   return (
-    <div className="overflow-x-hidden">
+    <div className="overflow-x-hidden" id="projects">
       {/* Horizontal Scroll Container - Desktop / Vertical Scroll - Mobile */}
       <div
         ref={horizontalContainerRef}
@@ -79,8 +100,7 @@ export default function Projects() {
                 Tienda E-Commerce de Mates
               </h1>
               <p className="text-[#b3b3b3] text-base lg:text-2xl pt-6 lg:pt-10">
-                E-commerce completo orientado a la venta de mates, desarrollado
-                con una arquitectura full stack moderna. El frontend está
+                E-commerce completo orientado a la venta de mates. El frontend está
                 construido con React y Vite para una experiencia rápida y
                 fluida, mientras que el backend utiliza Express sobre Node.js
                 con MongoDB para la gestión de productos, usuarios y
@@ -176,7 +196,7 @@ export default function Projects() {
               <h1 className="text-[#f9f9f9] mt-3 pl-2 lg:mt-5 text-3xl lg:text-6xl font-bold">
                 Saas de Obra Social
               </h1>
-              <p className="text-[#b3b3b3] text-base lg:text-2xl pt-6 lg:pt-10">
+              <p className="text-[#b3b3b3] text-base lg:text-2xl pt-6 lg:pt-10 mr-4">
                 Plataforma SaaS desarrollada con Next.js y React, escrita en
                 TypeScript para mayor robustez y escalabilidad. El backend
                 utiliza Express sobre Node.js junto a Prisma y una base de datos

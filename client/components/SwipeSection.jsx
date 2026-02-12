@@ -1,145 +1,159 @@
-"use client";
+// "use client";
 
-import React, { useEffect, useRef, useState } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-import About from "./About";
-import Contact from "./Contact";
+// import React, { useEffect, useRef, useState } from "react";
+// import { gsap } from "gsap";
+// import { ScrollTrigger } from "gsap/ScrollTrigger";
+// import About from "./About";
+// import Contact from "./Contact";
 
-if (typeof window !== "undefined") {
-  gsap.registerPlugin(ScrollTrigger);
-}
+// if (typeof window !== "undefined") {
+//   gsap.registerPlugin(ScrollTrigger);
+// }
 
-export default function SwipeSection() {
-  const swipeSectionRef = useRef(null);
-  const intentObserverRef = useRef(null);
-  const scrollTimeoutRef = useRef(null);
-  const currentIndexRef = useRef(0);
-  const allowScrollRef = useRef(true);
+// export default function SwipeSection() {
+//   const intentObserverRef = useRef(null);
+//   const scrollTimeoutRef = useRef(null);
+//   const currentIndexRef = useRef(0);
+//   const allowScrollRef = useRef(true);
 
-  const [isDesktop, setIsDesktop] = useState(false);
+//   const [isDesktop, setIsDesktop] = useState(false);
 
-  // Detectar breakpoint
-  useEffect(() => {
-    const update = () => setIsDesktop(window.innerWidth >= 768);
-    update();
-    window.addEventListener("resize", update);
-    return () => window.removeEventListener("resize", update);
-  }, []);
+//   // 🔒 Bloqueo / desbloqueo real del scroll
+//   const lockScroll = () => {
+//     document.body.style.overflow = "hidden";
+//   };
 
-  useEffect(() => {
-    if (!isDesktop) return; // 📱 En mobile no se monta GSAP
+//   const unlockScroll = () => {
+//     document.body.style.overflow = "";
+//   };
 
-    const swipePanels = gsap.utils.toArray(".swipe-section .panel");
-    const isTouch = ScrollTrigger.isTouch;
+//   useEffect(() => {
+//     const update = () => setIsDesktop(window.innerWidth >= 768);
+//     update();
+//     window.addEventListener("resize", update);
+//     return () => window.removeEventListener("resize", update);
+//   }, []);
 
-    if (isTouch === 1) {
-      ScrollTrigger.normalizeScroll(true);
-    }
+//   useEffect(() => {
+//     if (!isDesktop) return;
 
-    gsap.set(swipePanels, { zIndex: (i) => swipePanels.length - i });
+//     const swipePanels = gsap.utils.toArray(".swipe-section .panel");
+//     const isTouch = ScrollTrigger.isTouch;
 
-    scrollTimeoutRef.current = gsap
-      .delayedCall(1, () => {
-        allowScrollRef.current = true;
-      })
-      .pause();
+//     if (isTouch === 1) {
+//       ScrollTrigger.normalizeScroll(true);
+//     }
 
-    const gotoPanel = (index, isScrollingDown) => {
-      if (
-        (index === swipePanels.length && isScrollingDown) ||
-        (index === -1 && !isScrollingDown)
-      ) {
-        intentObserverRef.current?.disable();
-        return;
-      }
+//     gsap.set(swipePanels, {
+//       zIndex: (i) => swipePanels.length - i,
+//     });
 
-      allowScrollRef.current = false;
-      scrollTimeoutRef.current.restart(true);
+//     scrollTimeoutRef.current = gsap
+//       .delayedCall(0.8, () => {
+//         allowScrollRef.current = true;
+//       })
+//       .pause();
 
-      const target = isScrollingDown
-        ? swipePanels[currentIndexRef.current]
-        : swipePanels[index];
+//     const gotoPanel = (index, isScrollingDown) => {
+//       const lastIndex = swipePanels.length - 1;
 
-      gsap.to(target, {
-        yPercent: isScrollingDown ? -100 : 0,
-        duration: 0.75,
-        ease: "power2.out",
-      });
+//       // 🚫 Último panel + scroll hacia abajo = BLOQUEO TOTAL
+//       if (currentIndexRef.current === lastIndex && isScrollingDown) {
+//         lockScroll();
+//         return;
+//       }
 
-      currentIndexRef.current = index;
-    };
+//       // 🔓 Si vuelvo hacia arriba desde el último, libero
+//       if (currentIndexRef.current === lastIndex && !isScrollingDown) {
+//         unlockScroll();
+//       }
 
-    intentObserverRef.current = ScrollTrigger.observe({
-      type: "wheel,touch",
-      onUp: () =>
-        allowScrollRef.current && gotoPanel(currentIndexRef.current - 1, false),
-      onDown: () =>
-        allowScrollRef.current && gotoPanel(currentIndexRef.current + 1, true),
-      tolerance: 10,
-      scrollSpeed: isTouch === 1 ? 1 : -1,
-      preventDefault: true,
-      onEnable(self) {
-        allowScrollRef.current = false;
-        scrollTimeoutRef.current.restart(true);
-        const savedScroll = self.scrollY();
-        self._restoreScroll = () => self.scrollY(savedScroll);
-        document.addEventListener("scroll", self._restoreScroll, {
-          passive: false,
-        });
-      },
-      onDisable: (self) =>
-        document.removeEventListener("scroll", self._restoreScroll),
-    });
+//       if (index < 0 || index > lastIndex) return;
 
-    intentObserverRef.current.disable();
+//       allowScrollRef.current = false;
+//       scrollTimeoutRef.current.restart(true);
 
-    ScrollTrigger.create({
-      trigger: ".swipe-section",
-      pin: true,
-      start: "top top",
-      end: "bottom bottom",
-      onEnter: (self) => {
-        if (intentObserverRef.current.isEnabled) return;
-        self.scroll(self.start + 1);
-        intentObserverRef.current.enable();
-      },
-      onEnterBack: (self) => {
-        if (intentObserverRef.current.isEnabled) return;
-        self.scroll(self.end - 1);
-        intentObserverRef.current.enable();
-      },
-    });
+//       const target = isScrollingDown
+//         ? swipePanels[currentIndexRef.current]
+//         : swipePanels[index];
 
-    return () => {
-      ScrollTrigger.getAll().forEach((t) => t.kill());
-      intentObserverRef.current?.kill();
-      scrollTimeoutRef.current?.kill();
-    };
-  }, [isDesktop]); // eslint no se queja porque solo depende del breakpoint
+//       gsap.to(target, {
+//         yPercent: isScrollingDown ? -100 : 0,
+//         duration: 0.75,
+//         ease: "power2.out",
+//       });
 
-  return (
-    <div>
-      <div className="flex justify-center items-center">
-        <div
-          ref={swipeSectionRef}
-          className={`swipe-section relative w-full ${
-            isDesktop ? "h-screen overflow-hidden" : "h-auto"
-          }`}
-        >
-          <div className="panel md:absolute md:inset-0 relative">
-            <About />
-          </div>
+//       currentIndexRef.current = index;
+//     };
 
-          <div className="panel md:absolute md:inset-0 relative">
-            <Contact />
-          </div>
-        </div>
-      </div>
+//     intentObserverRef.current = ScrollTrigger.observe({
+//       type: "wheel,touch",
+//       onUp: () =>
+//         allowScrollRef.current &&
+//         gotoPanel(currentIndexRef.current - 1, false),
+//       onDown: () =>
+//         allowScrollRef.current &&
+//         gotoPanel(currentIndexRef.current + 1, true),
+//       tolerance: 10,
+//       preventDefault: true,
+//       scrollSpeed: isTouch === 1 ? 1 : -1,
+//       onEnable(self) {
+//         allowScrollRef.current = false;
+//         scrollTimeoutRef.current.restart(true);
 
-      <div className="h-[10vh] min-h-[60px] bg-[#101010] flex items-center justify-center text-white text-sm sm:text-base md:text-lg lg:text-[20px] px-4">
-        Derechos Reservados © 2025
-      </div>
-    </div>
-  );
-}
+//         const savedScroll = self.scrollY();
+//         self._restoreScroll = () => self.scrollY(savedScroll);
+//         document.addEventListener("scroll", self._restoreScroll, {
+//           passive: false,
+//         });
+//       },
+//       onDisable(self) {
+//         document.removeEventListener("scroll", self._restoreScroll);
+//       },
+//     });
+
+//     intentObserverRef.current.disable();
+
+//     ScrollTrigger.create({
+//       trigger: ".swipe-section",
+//       pin: true,
+//       pinSpacing: false,
+//       start: "top top",
+//       end: () => `+=${(swipePanels.length - 1) * window.innerHeight}`,
+//       onEnter(self) {
+//         if (intentObserverRef.current.isEnabled) return;
+//         self.scroll(self.start + 1);
+//         intentObserverRef.current.enable();
+//       },
+//       onEnterBack(self) {
+//         if (intentObserverRef.current.isEnabled) return;
+//         unlockScroll();
+//         self.scroll(self.end - 1);
+//         intentObserverRef.current.enable();
+//       },
+//     });
+
+//     return () => {
+//       unlockScroll();
+//       ScrollTrigger.getAll().forEach((t) => t.kill());
+//       intentObserverRef.current?.kill();
+//       scrollTimeoutRef.current?.kill();
+//     };
+//   }, [isDesktop]);
+
+//   return (
+//     <div
+//       className={`swipe-section relative w-full ${
+//         isDesktop ? "h-screen overflow-hidden" : "h-auto"
+//       }`}
+//     >
+//       <div className="panel md:absolute md:inset-0 relative">
+//         <About />
+//       </div>
+
+//       <div className="panel md:absolute md:inset-0 relative">
+//         <Contact />
+//       </div>
+//     </div>
+//   );
+// }ccccccccccc
