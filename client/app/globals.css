@@ -3,10 +3,8 @@
 
 
 
-body {
-  /* background-image: url("/image-mesh-gradient5.png"); color tipo papel */
+body {  
   background-color: #fffcf5;
-  /* color: #1022ff; */
   color: #2c3d33;
   background-repeat: no-repeat;
   position: relative;
@@ -25,7 +23,6 @@ ul {
 }
 
 .text-fill {
-  /* color: #003AFF; */
   color: #2c3d33;
   position: relative;
   z-index: 10;

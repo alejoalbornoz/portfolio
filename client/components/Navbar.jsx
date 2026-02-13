@@ -17,14 +17,13 @@ export default function Navbar() {
       },
     });
     navTween.fromTo(
-      "nav",
-      { backgroundColor: "transparent" },
+      ".navbar-glass",
+      { backgroundColor: "rgba(255,255,255,0)" },
       {
-        backgroundColor: "#00000050",
-        backdropFilter: "blur(10px)",
-        duration: 1,
-        ease: "power1.inOut",
-      }
+        backgroundColor: "rgba(255,255,255,0.55)",
+        duration: 0.6,
+        ease: "power1.out",
+      },
     );
   });
 
@@ -46,7 +45,7 @@ export default function Navbar() {
         aboutTransform.includes("matrix(1, 0, 0, 1, 0, -") ||
         aboutRect.top < -window.innerHeight * 0.5;
       const contactNotMoved = !contactTransform.includes(
-        "matrix(1, 0, 0, 1, 0, -"
+        "matrix(1, 0, 0, 1, 0, -",
       );
 
       const isContactActive = contactInView && aboutIsUp && contactNotMoved;
@@ -66,9 +65,10 @@ export default function Navbar() {
   return (
     <nav>
       <div
-        className={`fixed z-50 w-full px-4 sm:px-8 md:px-12 lg:px-20 font-[sora] transition-colors duration-500 ${
-          isOnDarkBg ? "text-[#fffcf5]" : "text-[#2c3d33]"
-        }`}
+        className={`fixed top-0 z-50 w-full
+    ${isOnDarkBg ? 'bg-[#2c3d33] text-[#fffcf5]' : 'bg-[#fffcf5] text-[#2c3d33]'}
+    px-4 sm:px-8 md:px-12 lg:px-20
+    font-[sora] transition-colors duration-300`}
       >
         <div className="flex justify-between items-center px-4 sm:px-6 py-4 text-[16px] sm:text-[18px] md:text-[20px]">
           <a
@@ -78,7 +78,7 @@ export default function Navbar() {
             <a href="#home">Inicio</a>
           </a>
 
-          {/* {/* Desktop Menu *s/} */}
+          {/* Desktop Menu */}
           <ul className="hidden md:flex lg:gap-12 gap-7 cursor-pointer">
             {navLinks.map((link) => {
               return (
