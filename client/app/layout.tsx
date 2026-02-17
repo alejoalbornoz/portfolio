@@ -7,25 +7,37 @@ import {
 } from "next/font/google";
 import "./globals.css";
 
-const libreCaslonDisplay = Libre_Caslon_Display({
-  variable: "--font-libre-caslon-display",
-  weight: ["400"],
-});
+
 
 const anton = Anton({
-  variable: "--font-anton",
+  subsets: ["latin"],
   weight: ["400"],
+  variable: "--font-anton",
+  display: "swap",
+});
+
+
+const libreCaslonDisplay = Libre_Caslon_Display({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-libre-caslon-display",
+  display: "swap",
 });
 
 const sora = Sora({
-  variable: "--font-sora",
+  subsets: ["latin"],
   weight: ["400"],
+  variable: "--font-sora",
+  display: "swap",
 });
 
 const redditSansFont = Reddit_Sans({
-  variable: "--font-Reddit_Sans",
+  subsets: ["latin"],
   weight: ["400"],
+  variable: "--font-reddit-sans",
+  display: "swap",
 });
+
 
 export const metadata: Metadata = {
   title: "Alejo Albornoz",
